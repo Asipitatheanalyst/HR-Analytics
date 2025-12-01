@@ -113,6 +113,14 @@ The model was built around a simple, efficient **star schema**:
 
 A unique challenge was the need to calculate attrition using Date of Termination — a relationship that isn’t active by default, so I used **USERELATIONSHIP** to activate it only when calculating attrition-specific measures.
 
+Terminated Employees =
+CALCULATE(
+    [Total Employees],
+    HRDataset[EmploymentStatus] <> "Active",
+    USERELATIONSHIP('Date Table'[Date], HRDataset[DateofTermination])
+)
+
+
 ---
 
 ## 6. DAX Measures Created
