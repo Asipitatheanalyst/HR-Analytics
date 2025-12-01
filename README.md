@@ -14,8 +14,7 @@
 8. [Key Insights](#8-key-insights)
 9. [Tools Used](#9-tools-used)
 10. [Project Deliverables](#10-project-deliverables)
-11. [Potential Extensions](#11-potential-extensions)
-12. [Live Dashboard Link](#12-live-dashboard-link)
+11. [Live Dashboard Link](#11-live-dashboard-link)
 
 ---
 
@@ -113,14 +112,14 @@ The model was built around a simple, efficient **star schema**:
 
 A unique challenge was the need to calculate attrition using Date of Termination — a relationship that isn’t active by default, so I used **USERELATIONSHIP** to activate it only when calculating attrition-specific measures.
 
+```dax
 Terminated Employees =
 CALCULATE(
     [Total Employees],
     HRDataset[EmploymentStatus] <> "Active",
     USERELATIONSHIP('Date Table'[Date], HRDataset[DateofTermination])
 )
-
-
+```
 ---
 
 ## 6. DAX Measures Created
@@ -226,16 +225,5 @@ A clean table for HR executives to quickly find any employee:
 
 ---
 
-## 11. Potential Extensions
-
-- Add forecasting for headcount and attrition  
-- Add HR KPIs like performance ratings or promotion rates  
-- Integrate with a live HRIS system  
-- Implement role-level security (HR vs Management view)  
-- Automate refresh via Power BI Service  
-
----
-
-## 12. Live Dashboard Link
-
-*(Add your Power BI link here once published — recommended under this section so it’s easy for recruiters to find.)*
+## 11. Live Dashboard Link
+[Click to View the Power BI Report](https://app.powerbi.com/view?r=eyJrIjoiZTY1NWEzNjQtNWE5YS00Y2NjLWFkM2YtYTU2MDUyMzc0OThhIiwidCI6IjJiYjFlMzEyLTIwN2QtNDUyYi05OGRhLTE0MTc2MmIxMWJjZiJ9)
